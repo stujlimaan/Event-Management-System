@@ -1,0 +1,25 @@
+{
+  "name": "event-management-system",
+  "version": "1.0.0",
+  "description": "Problem statement :\r Event Management System (NodeJs + MySQL/MongoDB)\r - USER\r 1. Register (User can register)\r 2. Login (User login)\r 3. Logout (User logout)\r 4. Change Password (User can change his password)\r 5. Update Password (When request for reset password is done, to\r set new password)\r 6. Reset Password (In API response send info regarding to updatepassword)\r - Event (Authentication required for doing operations on event)\r 1. Create (User can create Event)\r 2. Invite (Users) // when that user login in he can see his\r created event list and also events in which he is invited.\r 3. List (Invited users when login can see their created events as\r well as events in which they are invited in, also display creator\r name in list)\r Following are the actions needs to be done on listing api\r a. pagination\r b. Sorting\r c. Date Filter\r d. Search Filter\r 4. Event Detail + list of users invited (API to get specific event\r and invites)\r 5. Event update (Event Update)\r Notes:\r - Consider models as per your knowledge\r - Create Postman for above APIs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/stujlimaan/Event-Management-System.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/stujlimaan/Event-Management-System/issues"
+  },
+  "homepage": "https://github.com/stujlimaan/Event-Management-System#readme",
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "express": "^4.18.2",
+    "mongoose": "^7.0.1"
+  }
+}
