@@ -23,7 +23,19 @@ const userSchema = new mongoose.Schema({
         required:true,
         trim:true
     },
+    InvitedUser:[
+        {userName:{type:String},link:{type:String}},
+    ],
+    InvitedMe:[
+        {whoInvite:{type:String},link:{type:String}},
+    ],
     // eventsBooked: [Number],
+    history: [
+        {
+          action: String,
+          time: Date
+        }
+      ],
 
     phone:{
         type:Number,

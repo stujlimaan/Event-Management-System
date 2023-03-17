@@ -12,11 +12,11 @@ router.put("/changePassword",User.changePassword)
 router.put("/updatePassword",auth.authentication,User.updatePassword)
 
 //all event api
-router.post("/createEvent",Event.createEvent)
-router.post("/invite",Event.inviteUser)
-router.get("/list",Event.list)
+router.post("/createEvent",auth.authentication,Event.createEvent)
+router.post("/invite/:eventId",auth.authentication,Event.inviteUser)
+router.get("/list/:page",Event.list)
 router.get("/eventDetails",Event.eventDetails)
-router.put("/eventupdate",Event.eventUpdate)
+router.put("/eventupdate/:eventId",Event.eventUpdate)
 
 
 

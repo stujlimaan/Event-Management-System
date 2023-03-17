@@ -131,10 +131,9 @@ const logout = async (req,res)=>{
     try{
          const token = req.header("authorization")
          const userId=req.token.userId
-         const loginData = await tokenModel.findById({_id:userId})
-         console.log(token,userId,loginData)
-         const destroyToken = token.delete
-         res.status(200).send({status:true,msg:"logout successfully",token,destroyToken})
+         const loginData = await tokenModel.findOne({userId:userId})
+         const logout = await tokenModel.findByIdAndUpdate(userId,{$unset:{token:""}},{new:true})
+         res.status(200).send({status:true,msg:"logout successfully",logout})
     }catch(err){
         res.status(500).send({msg:err.message})
     }
@@ -144,52 +143,53 @@ const logout = async (req,res)=>{
 const changePassword = async (req,res)=>{
     try{
         let requestBody = req.body
-        let userId = req.token.userId
-        console.log(userId)
+        // let userId = req.token.userId
 
         if(!validator.isValidBody(requestBody)){
             return res.status(400).send({status:false,msg:"please enter some data in the body"})
         }
-        const {email,password,newPassword}=requestBody
-        const user = await userModel.findById(userId)
-        if(!user){
+        const {email,newPassword,confirmPassword}=requestBody
+        if(!validator.isValidInputValue(email)){
+            return res.status(400).send({status:false,msg:"please enter email id"})
+        }
+        if(!validator.isValidEmail(email)){
+            return res.status(400).send({status:false,msg:"please enter valid email id like abc@gmail.com"})
+        }
+        const userDetail = await userModel.findOne({email:email})
+        
+        if(!userDetail){
             return res.status(404).send({status:false,msg:"user not found"})
+        }
+
+        if(!validator.isValidInputValue(newPassword)){
+            return res.status(400).send({status:false,msg:"please enter new password"})
+        }
+
+        if(!validator.isValidPassword(newPassword)){
+            return res.status(400).send({status:false,msg:"new password should be 8 to 15 characters and 1 letter and 1 number"})
+        }
+        if(!validator.isValidInputValue(confirmPassword)){
+            return res.status(400).send({status:false,msg:"please enter confirm password"})
+        }
+
+        if(!validator.isValidPassword(confirmPassword)){
+            return res.status(400).send({status:false,msg:"confirm password should be 8 to 15 characters and 1 letter and 1 number"})
+        }
+
+        if(!(newPassword===confirmPassword)){
+            return res.status(400).send({status:false,msg:"new password and confirm password does not match"})
         }
         
         //new password update
         const salt = await bcrypt.genSalt(10);
         const newEncryptedPassword = await bcrypt.hash(newPassword,salt)
-        const updatePass={newEncryptedPassword,updatedAt:Date.now()}
+        const updatePass={password:newEncryptedPassword,updatedAt:Date.now()}
         // update password
-        const newUpdated= await userModel.findByIdAndUpdate(userId,{$set:{password:updatePass}},{new:true})
-        res.send({status:true,msg:"user password updated",data:newUpdated})
+        const newUpdated= await userModel.findOneAndUpdate({email:email},{$set:updatePass},{new:true})
+        res.send({status:true,msg:"user reset password updated",data:newUpdated})
 
-        // if(!validator.isValidInputValue(email)){
-        //     return res.status(400).send({status:false,msg:"please enter email id"})
-        // }
         
-        // if(!validator.isValidEmail(email)){
-        //     return res.status(400).send({status:false,msg:"please enter valid email id like abc@gmail.com"})
-        // }
-        
-        // if(!validator.isValidInputValue(password)){
-        //     return res.status(400).send({status:false,msg:"please enter old password"})
-        // }
-        // if(!validator.isValidPassword(password)){
-        //     return res.status(400).send({status:false,msg:"please enter some data in the body"})
-        // }
-        
-        // if(!validator.isValidBody(requestBody)){
-        //     return res.status(400).send({status:false,msg:"please enter some data in the body"})
-        // }
-        
-        // if(!validator.isValidInputValue(newPassword)){
-        //     return res.status(400).send({status:false,msg:"please enter new password"})
-        // }
-        
-        // if(!validator.isValidPassword(newPassword)){
-        //     return res.status(400).send({status:false,msg:"please enter some data in the body"})
-        // }
+
     }catch(err){
         res.status(500).send({msg:err.message})
     }
@@ -204,16 +204,41 @@ const updatePassword= async (req,res)=>{
         if(!validator.isValidBody(requestBody)){
             return res.status(400).send({status:false,msg:"please enter some data in the body"})
         }
-        const {newPassword}=requestBody
-        // if(!validator.isValidInputValue(password)){
-        //     return res.status(400).send({status:false,msg:"please enter old password"})
-        // }
-        // if(!validator.isValidPassword(password)){
-        //     return res.status(400).send({status:false,msg:"please enter some data in the body"})
-        // }
-        const user = await userModel.findById(userId)
-        if(!user){
+        const {oldPassword,newPassword,confirmPassword}=requestBody
+        if(!validator.isValidInputValue(oldPassword)){
+            return res.status(400).send({status:false,msg:"please enter old password"})
+        }
+        if(!validator.isValidPassword(oldPassword)){
+            return res.status(400).send({status:false,msg:"old password should be 8 to 15 characters and 1 letter and 1 number"})
+        }
+        const userDetail = await userModel.findById({_id:userId})
+        
+        if(!userDetail){
             return res.status(404).send({status:false,msg:"user not found"})
+        }
+        const decPassword = await bcrypt.compare(oldPassword,userDetail.password)
+
+        // const userPassword = await userModel.findOne({password:userDetail.password})
+        if(!decPassword){
+            return res.status(400).send({status:false,msg:"please enter carrect old password"})
+        }
+        if(!validator.isValidInputValue(newPassword)){
+            return res.status(400).send({status:false,msg:"please enter new password"})
+        }
+
+        if(!validator.isValidPassword(newPassword)){
+            return res.status(400).send({status:false,msg:"new password should be 8 to 15 characters and 1 letter and 1 number"})
+        }
+        if(!validator.isValidInputValue(confirmPassword)){
+            return res.status(400).send({status:false,msg:"please enter confirm password"})
+        }
+
+        if(!validator.isValidPassword(confirmPassword)){
+            return res.status(400).send({status:false,msg:"confirm password should be 8 to 15 characters and 1 letter and 1 number"})
+        }
+
+        if(!(newPassword===confirmPassword)){
+            return res.status(400).send({status:false,msg:"new password and confirm password does not match"})
         }
         
         //new password update

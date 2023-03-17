@@ -1,6 +1,12 @@
 const mongoose = require("mongoose")
+const objectId=mongoose.Schema.Types.ObjectId
 
 const eventSchema = new mongoose.Schema({
+  userId:{
+    type:objectId,
+    required:true,
+    ref:"user"
+},
     eventId:{
         type:Number,
         required:true,
