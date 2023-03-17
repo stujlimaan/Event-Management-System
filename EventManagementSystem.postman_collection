@@ -1,0 +1,302 @@
+{
+	"info": {
+		"_postman_id": "f46aadb8-fcd8-43bf-9b34-ee240a285aba",
+		"name": "New Collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "13838729"
+	},
+	"item": [
+		{
+			"name": "logout",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NDExZjNiMTRhMWE0NDc5OWQ2YTUzZmEiLCJpYXQiOjE2Nzg5NzMwNDQsImV4cCI6MTY3ODk3NDg0NH0.dX3j1MVPgy9-Neqx-iF05dpAg_XlSdqHr8puYEsBHDg",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/logout",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"logout"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\":\"amaan1123@gmail.com\",\r\n    \"password\":\"tujliman123\"\r\n}\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/login",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "registration",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"firstName\":\"Maa\",\r\n    \"lastName\":\"maan\",\r\n    \"email\":\"amaan1123@gmail.com\",\r\n    \"phone\":\"9999999999\",\r\n    \"address\":\"ggn\",\r\n    \"password\":\"aaa1235gg5555\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/registration",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"registration"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "changePassword",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\":\"tujliman@gmail.com\",\r\n    \"newPassword\":\"tujliman12345\",\r\n    \"confirmPassword\":\"tujliman12345\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/changepassword",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"changepassword"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "updatePassword",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NDEzMTc5ZWM0N2M5MzEwZmNmYjkxNDIiLCJpYXQiOjE2Nzg5NzY4NDQsImV4cCI6MTY3ODk3ODY0NH0.sdb0hD2vjMPQ_QPgyglIV6v3XKF-GNn9IhbbQyz2hZI",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\":\"amaan1123@gmail.com\",\r\n    \"oldPassword\":\"aaa1235gg5555\",\r\n    \"newPassword\":\"tujliman123\",\r\n    \"confirmPassword\":\"tujliman123\"\r\n}\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/updatePassword",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"updatePassword"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "craeteEvent",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NDEzMTc5ZWM0N2M5MzEwZmNmYjkxNDIiLCJpYXQiOjE2NzkwNDIzNjUsImV4cCI6MTY3OTA0NDE2NX0.0uJog5sl1dhR_y1RfNrR6iRkL_mYkNL5UGfb_cvy3CI",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"eventId\":9,\r\n    \"eventName\":\"workshop3\",\r\n    \"summary\":\"learning nodejs reactjs\",\r\n    \"address\":\"pratapgarh\",\r\n    \"startDate\":\"2023/03/20\",\r\n    \"endDate\":\"2023/03/23\",\r\n    \"fullDesc\":\"nodejs complete workshop\",\r\n    \"capacity\":100,\r\n    \"currentBooking\":1,\r\n    \"promocode\":\"asqwe\",\r\n    \"discount\":10,\r\n    \"price\":200\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/createEvent",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"createEvent"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "invite",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NDEzMTc5ZWM0N2M5MzEwZmNmYjkxNDIiLCJpYXQiOjE2NzkwNDIzNjUsImV4cCI6MTY3OTA0NDE2NX0.0uJog5sl1dhR_y1RfNrR6iRkL_mYkNL5UGfb_cvy3CI",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"invitedEmail\":\"tujliman@gmail.com\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/invite/9",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"invite",
+						"9"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "listAndSearch",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/list/2?eventName=workshop",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"list",
+						"2"
+					],
+					"query": [
+						{
+							"key": "eventName",
+							"value": "workshop"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "eventDetails",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/eventDetails",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"eventDetails"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "eventUpdate",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"price\":20001,\r\n    \"eventName\":\"abc\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/eventupdate/3",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"eventupdate",
+						"3"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
